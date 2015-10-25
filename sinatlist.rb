@@ -15,7 +15,7 @@ unless connection.table_exists?(:students)
 #    stu.column :email, :string, null: false
     stu.column :name, :string
     stu.column :email, :string
-#    stu.timestamps
+    stu.timestamps
   end
 end
 
