@@ -26,3 +26,9 @@ post '/new' do
   student.save
   redirect '/'
 end
+
+delete '/del' do
+  student = Student.find(params[:id])
+  student.destroy
+  redirect '/'
+end

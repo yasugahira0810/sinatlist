@@ -1,4 +1,4 @@
 require 'rack'
-require './start'
+require './sinatlist'
 
 run Sinatra::Application
