@@ -8,7 +8,12 @@ ActiveRecord::Base.establish_connection(:development)
 class Student < ActiveRecord::Base
 end
 
-students = Student.all
-students.each do |stu|
-  puts stu.id + "\t" + stu.name + "\t" + stu.email
+#students = Student.all
+#students.each do |stu|
+#  puts stu.id + "\t" + stu.name + "\t" + stu.email
+#end
+
+get '/' do
+  @students = Student.all
+  erb :index
 end
