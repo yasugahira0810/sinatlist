@@ -17,6 +17,7 @@ unless connection.table_exists?(:students)
   end
 end
 
+# Map table(students) and object(Student)
 class Student < ActiveRecord::Base
 end
 
@@ -27,7 +28,6 @@ end
 
 post '/new' do
   student = Student.new
-  student.id = params[:id]
   student.name = params[:name]
   student.email = params[:email]
   student.save
