@@ -17,6 +17,7 @@
       <td><%= stu.id %></td>
       <td><%= stu.name %></td>
       <td><%= stu.email %></td>
+      <td><a href="<%= stu.id %>/edit">編集</a></td>
       <form method="post" action="del">
       <td><input type="submit" value="削除"></td>
           <input type="hidden" name="id" value="<%= stu.id %>">

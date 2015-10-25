@@ -11,8 +11,10 @@ connection = ActiveRecord::Base.connection
 
 unless connection.table_exists?(:students)
   connection.create_table :students do |stu|
-    stu.column :name, :string, null: false
-    stu.column :email, :string, null: false
+#    stu.column :name, :string, null: false
+#    stu.column :email, :string, null: false
+    stu.column :name, :string
+    stu.column :email, :string
 #    stu.timestamps
   end
 end
@@ -37,5 +39,25 @@ end
 delete '/del' do
   student = Student.find(params[:id])
   student.destroy
+  redirect '/'
+end
+
+#get '/:id/edit' do
+#  @student = Student.find(params[:id])
+#  erb :edit
+#end
+
+get '/:id/edit' do
+  @student = Student.find(params[:id])
+  erb :edit
+end
+
+put '/:id' do
+  student = Student.find(params[:id])
+  student.update_attributes!(
+    id:		params[:id],
+    name:	params[:name],
+    email:	params[:email]
+  )
   redirect '/'
 end
