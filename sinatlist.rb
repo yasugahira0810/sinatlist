@@ -2,16 +2,23 @@ require 'sinatra'
 require 'active_record'
 require 'yaml'
 
+# Connect DB
 ActiveRecord::Base.configurations = YAML.load_file('./model/database.yml')
 ActiveRecord::Base.establish_connection(:development)
 
-class Student < ActiveRecord::Base
+# Connect table
+connection = ActiveRecord::Base.connection
+
+unless connection.table_exists?(:students)
+  connection.create_table :students do |stu|
+    stu.column :name, :string, null: false
+    stu.column :email, :string, null: false
+#    stu.timestamps
+  end
 end
 
-#students = Student.all
-#students.each do |stu|
-#  puts stu.id + "\t" + stu.name + "\t" + stu.email
-#end
+class Student < ActiveRecord::Base
+end
 
 get '/' do
   @students = Student.all
