@@ -29,10 +29,10 @@ get '/' do
 end
 
 post '/new' do
-  student = Student.new
-  student.name = params[:name]
-  student.email = params[:email]
-  student.save
+  student = Student.create(
+    :name => params[:name],
+    :email => params[:email]
+  )
   redirect '/'
 end
 
